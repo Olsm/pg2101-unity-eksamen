@@ -1,0 +1,8 @@
+*
+!.gitignore
+!Assets
+!Assets/*
+!Assets/Prefabs/*
+!Assets/Scenes/*
+!Assets/Sprites/*
+!Assets/Sound/*
