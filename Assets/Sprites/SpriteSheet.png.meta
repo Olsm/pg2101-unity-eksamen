@@ -1,0 +1,121 @@
+fileFormatVersion: 2
+guid: 3a3447b6c4cbd1e4f8bf54b4faafe5fd
+timeCreated: 1433766083
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Basket_Yellow
+    21300002: Ball_Red
+    21300004: Basket_Blue
+    21300006: Player_Ball
+    21300008: Player_Gun
+    21300010: Gun_Laser
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: Basket_Yellow
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 300
+        width: 94
+        height: 81
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Ball_Red
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 283
+        width: 59
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Basket_Blue
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 301
+        width: 94
+        height: 81
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Player_Ball
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 56
+        width: 203
+        height: 203
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Player_Gun
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 21
+        width: 182
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Gun_Laser
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 34
+        width: 131
+        height: 11
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
