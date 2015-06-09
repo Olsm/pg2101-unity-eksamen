@@ -20,6 +20,12 @@ public class PointsManager : MonoBehaviour {
 	}
 
 	void Update () {
+		if (gameOver) {
+			if (timeSurvived > PlayerPrefs.GetFloat("High Score", 0))
+				PlayerPrefs.SetFloat("High Score", timeSurvived);
+			Application.LoadLevel("Menu");
+		}
+
 		// Update time survived
 		if (timeSurvived < timer) {
 			timeSurvived += Time.deltaTime;	// Add a second to time survived
@@ -46,7 +52,7 @@ public class PointsManager : MonoBehaviour {
 	}
 
 	// Return a string with the time in minutes:secons
-	string timeToString (float time) {
+	public static string timeToString (float time) {
 		// Calculate minutes and convert to string
 		string minutes = Mathf.Floor(time / 60).ToString("00");
 		// Calculate seconds and convert to string
