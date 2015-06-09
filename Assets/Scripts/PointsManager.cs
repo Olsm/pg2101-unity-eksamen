@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PointsManager : MonoBehaviour {
 
-	private static readonly float timer = 300;
+	private static float timer = 300;
 	public static float timeSurvived = 0;	// A global float for how long player has survived
 	public static int lives = 3;	// A global int for how many lives are left
 	public static float timeLeft = timer;	// A global float for how much time is left
@@ -54,15 +54,22 @@ public class PointsManager : MonoBehaviour {
 		return minutes + ":" + seconds;
 	}
 
-	// Lose a life or game over when player is hit
-	void playerHit () {
+	// Lose a life or game over if no lives left
+	public void LifeLost () {
 		if (lives > 0)
 			lives -= 1;
 		if (lives == 0)
 			gameOver = true;
+		livesText.text = "Lives: " + lives;
 	}
 
 	public void SetPowerText (string text) {
 		firePowerText.text = "Power: " + text;
+	}
+
+	// Add time to timer
+	public void AddTime (float time) {
+		timer += time;
+		timeLeft += time;
 	}
 }
