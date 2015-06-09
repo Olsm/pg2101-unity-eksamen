@@ -32,22 +32,21 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKeyDown ("space"))
 		    ballShot = true;
 
-		if (!ballShot) {
-			// Orbit ball around player to the left
-			if (Input.GetKey ("left")) {
-				if (direction == "right")
-					direction = "left";
-				if (ball.transform.position.y > -4.2 || ball.transform.localPosition.x > 0)
-					ball.transform.RotateAround (pos, axis, orbitSpeed * Time.deltaTime);
-			}
+		// Orbit ball around player to the left
+		if (Input.GetKey ("left")) {
+			if (direction == "right")
+				direction = "left";
+			if (!ballShot && (ball.transform.position.y > -4.2 || ball.transform.localPosition.x > 0))
+				ball.transform.RotateAround (pos, axis, orbitSpeed * Time.deltaTime);
+		}
 		// Orbit ball around player to the right
 		else if (Input.GetKey ("right")) {
-				if (direction == "left")
-					direction = "right";
-				if (ball.transform.position.y > -4.2 || ball.transform.localPosition.x < 0)
-					ball.transform.RotateAround (pos, -axis, orbitSpeed * Time.deltaTime);
-			} 
-		}
+			if (direction == "left")
+				direction = "right";
+			if (!ballShot && (ball.transform.position.y > -4.2 || ball.transform.localPosition.x < 0))
+				ball.transform.RotateAround (pos, -axis, orbitSpeed * Time.deltaTime);
+		} 
+
 		// Shoot laser from gun and move player opposite direction
 		if (Input.GetKey ("left ctrl") || Input.GetKey ("right ctrl")) {
 			if (!Laser.laserShot) {
