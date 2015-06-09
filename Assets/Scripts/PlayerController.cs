@@ -10,13 +10,15 @@ public class PlayerController : MonoBehaviour {
 	private float shootPower = 10f;	// How long a shot should travel
 	private string direction = "right";	// in what direction should gun shoot
 	private Vector2 targetPosition;
+	private bool ballShot = false;
 
-	public GameObject ball;
+	public GameObject ballPrefab;
+	private GameObject ball;
 	public GameObject laser;
 	public Transform gun;
 
 	void Awake () {
-		ball = newBall ();
+		newBall ();
 	}
 
 	void Update () {
@@ -27,20 +29,25 @@ public class PlayerController : MonoBehaviour {
 		if (Laser.laserShot)
 			transform.position = Vector2.Lerp (pos, targetPosition, Time.deltaTime * playerSpeed);
 
-		// Orbit ball around player to the left
-		if (Input.GetKey ("left")) {
-			if (direction == "right")
-				direction = "left";
-			if (ball.transform.position.y > -4.2 || ball.transform.localPosition.x > 0)
-				ball.transform.RotateAround (pos, axis, orbitSpeed * Time.deltaTime);
-		}
+		if (Input.GetKeyDown ("space"))
+		    ballShot = true;
+
+		if (!ballShot) {
+			// Orbit ball around player to the left
+			if (Input.GetKey ("left")) {
+				if (direction == "right")
+					direction = "left";
+				if (ball.transform.position.y > -4.2 || ball.transform.localPosition.x > 0)
+					ball.transform.RotateAround (pos, axis, orbitSpeed * Time.deltaTime);
+			}
 		// Orbit ball around player to the right
 		else if (Input.GetKey ("right")) {
-			if (direction == "left")
-				direction = "right";
-			if (ball.transform.position.y > -4.2 || ball.transform.localPosition.x < 0)
-				ball.transform.RotateAround (pos, -axis, orbitSpeed * Time.deltaTime);
-		} 
+				if (direction == "left")
+					direction = "right";
+				if (ball.transform.position.y > -4.2 || ball.transform.localPosition.x < 0)
+					ball.transform.RotateAround (pos, -axis, orbitSpeed * Time.deltaTime);
+			} 
+		}
 		// Shoot laser from gun and move player opposite direction
 		if (Input.GetKey ("left ctrl") || Input.GetKey ("right ctrl")) {
 			if (!Laser.laserShot) {
@@ -63,11 +70,12 @@ public class PlayerController : MonoBehaviour {
 		targetPosition.x = Mathf.Clamp (targetPosition.x, -7, 7);
 	}
 
-	GameObject newBall () {
+	public void newBall () {
 		// Instantiate a new ball, set player as parent and initial local position
-		ball = Instantiate (ball, new Vector3 (0f, 0f, 0f), new Quaternion (0f, 0f, 0f, 0f)) as GameObject;
+		ball = Instantiate (ballPrefab, new Vector3 (0f, 0f, 0f), new Quaternion (0f, 0f, 0f, 0f)) as GameObject;
 		ball.transform.parent = transform;
+		ball.name = "Ball_Red";
 		ball.transform.localPosition = new Vector2 (0f, 1.4f);
-		return ball;
+		ballShot = false;
 	}
 }
