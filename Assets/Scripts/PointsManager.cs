@@ -4,20 +4,19 @@ using UnityEngine.UI;
 
 public class PointsManager : MonoBehaviour {
 
-	static readonly float timer = 300;
-	static float timeSurvived = 0;	// A global float for how long player has survived
-	static int lives = 3;	// A global int for how many lives are left
-	static float timeLeft = timer;	// A global float for how much time is left
-	static bool gameOver = false;
+	private static readonly float timer = 300;
+	public static float timeSurvived = 0;	// A global float for how long player has survived
+	public static int lives = 3;	// A global int for how many lives are left
+	public static float timeLeft = timer;	// A global float for how much time is left
+	private bool gameOver = false;
 	private string timeString;
-	private Text timeSurvivedText;
-	private Text timeLeftText;
-	private Text livesText;
+	public Text timeSurvivedText;
+	public Text timeLeftText;
+	public Text livesText;
+	public Text firePowerText;
 
 	void Awake () {
-		timeSurvivedText = GameObject.Find ("Text_TimeSurvived").GetComponent<Text> ();
-		timeLeftText = GameObject.Find ("Text_TimeLeft").GetComponent<Text> ();
-		livesText = GameObject.Find ("Text_Lives").GetComponent<Text> ();
+
 	}
 
 	void Update () {
@@ -39,6 +38,11 @@ public class PointsManager : MonoBehaviour {
 		else if (!gameOver && timeLeft == 0) {
 			gameOver = true;
 		}
+
+		if (Input.GetKeyDown ("space")) {
+			firePowerText.enabled = true;
+		} else if (Input.GetKeyUp ("space")) 
+			firePowerText.enabled = false;
 	}
 
 	// Return a string with the time in minutes:secons
@@ -56,5 +60,9 @@ public class PointsManager : MonoBehaviour {
 			lives -= 1;
 		if (lives == 0)
 			gameOver = true;
+	}
+
+	public void SetPowerText (string text) {
+		firePowerText.text = "Power: " + text;
 	}
 }
