@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Laser : MonoBehaviour {
+public class LaserShoot : MonoBehaviour {
 
 	public static bool laserShot = false;
 	private string direction = "right";
