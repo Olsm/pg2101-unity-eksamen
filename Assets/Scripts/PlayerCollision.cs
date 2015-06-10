@@ -4,11 +4,15 @@ using System.Collections;
 public class PlayerCollision : MonoBehaviour {
 
 	Rigidbody2D rb;
-	private PointsManager gameInfo;
+	private GameManager gameInfo;
 
 	void Awake() {
 		rb = GetComponent<Rigidbody2D> ();
-		gameInfo = GameObject.Find ("Text_GameInfo").GetComponent<PointsManager> ();
+		gameInfo = GameObject.Find ("Text_GameInfo").GetComponent<GameManager> ();
+	}
+
+	void Update() {
+		if (transform.localPosition != new Vector3(0, 0)) transform.localPosition = new Vector2 (0, 0);
 	}
 
 	void OnCollisionEnter2D (Collision2D collider) {
@@ -28,5 +32,6 @@ public class PlayerCollision : MonoBehaviour {
 	// Turn off kinematic after collision to enable collision detection
 	void OnCollisionExit2D (Collision2D collider) {
 		rb.isKinematic = false;
+		transform.localPosition = new Vector2 (0, 0);
 	}
 }
