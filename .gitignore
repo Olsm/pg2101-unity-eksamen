@@ -1,9 +1,12 @@
 *
 !.gitignore
 !Assets
+!ProjectSettings
+!ProjectSettings/*
 !Assets/*
 !Assets/Prefabs/*
 !Assets/Scenes/*
 !Assets/Sprites/*
 !Assets/Sound/*
 !Assets/Scripts/*
+!*.pdf
