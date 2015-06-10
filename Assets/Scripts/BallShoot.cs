@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BallShoot : MonoBehaviour {
 
-	private float minimumPower = 200f;
+	private float minimumPower = 300f;
 	private float power = 0f;
 	private float powerRate = 1f;
 	public float powerMultiplier = 5f;
@@ -25,7 +25,7 @@ public class BallShoot : MonoBehaviour {
 			if (Input.GetKey ("space")) { 
 				power += (powerRate * shift);
 				gameInfo.SetPowerText ("" + power);
-				if (power >= 100 || power <= 0)
+				if (power >= 60 || power <= 0)
 					shift = shift * -1;
 			}
 			// Shoot ball

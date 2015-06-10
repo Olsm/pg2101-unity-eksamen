@@ -44,6 +44,7 @@ public class BasketYellow : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D collider) {
 		if (collider.gameObject.name == "Gun_Laser(Clone)") {
+			timePoints = Random.Range(1, 5);
 			gameInfo.AddTime(timePoints);
 			Destroy (gameObject);
 		} 
