@@ -67,8 +67,8 @@ public class PlayerController : MonoBehaviour {
 			targetPosition = new Vector2 (pos.x - shootPower/2, pos.y);
 		else
 			targetPosition = new Vector2 (pos.x + shootPower/2, pos.y);
-		// Stop player from going further than 7f left and right
-		targetPosition.x = Mathf.Clamp (targetPosition.x, -7, 7);
+		// Stop player from going further than 8f left and right
+		targetPosition.x = Mathf.Clamp (targetPosition.x, -8, 8);
 	}
 
 	public void newBall () {
