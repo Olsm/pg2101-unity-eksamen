@@ -8,13 +8,13 @@ public class BallShoot : MonoBehaviour {
 	private float powerRate = 1f;
 	public float powerMultiplier = 5f;
 	private int shift = 1;	// used to shift power counter between positive and negative
-	private PointsManager gameInfo;
+	private GameManager gameInfo;
 	private bool shot = false;
 	private float shootWait = 2;
 
 	void Awake () {
 		GetComponent<Rigidbody2D> ().isKinematic = true;
-		gameInfo = GameObject.Find ("Text_GameInfo").GetComponent <PointsManager> ();
+		gameInfo = GameObject.Find ("Text_GameInfo").GetComponent <GameManager> ();
 	}
 
 	void Update () {

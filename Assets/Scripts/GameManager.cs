@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class PointsManager : MonoBehaviour {
+public class GameManager : MonoBehaviour {
 
 	private static float timer = 300;
 	public static float timeSurvived = 0;	// A global float for how long player has survived
@@ -10,13 +10,15 @@ public class PointsManager : MonoBehaviour {
 	public static float timeLeft = timer;	// A global float for how much time is left
 	private bool gameOver = false;
 	private string timeString;
+	public GameObject baskets;
+	public GameObject yellowBasket;
 	public Text timeSurvivedText;
 	public Text timeLeftText;
 	public Text livesText;
 	public Text firePowerText;
 
-	void Awake () {
-
+	void Awake() {
+		InvokeRepeating ("NewYellowBasket", 10f, 5f);
 	}
 
 	void Update () {
@@ -77,5 +79,14 @@ public class PointsManager : MonoBehaviour {
 	public void AddTime (float time) {
 		timer += time;
 		timeLeft += time;
+	}
+
+	void NewYellowBasket () {
+		Vector3 position;
+		position.x = Random.Range (-7f, 7f);
+		position.y = Random.Range (-1.3f, 3f);
+		position = new Vector3(position.x, position.y);
+		GameObject yellowBasketInstance = (GameObject) Instantiate(yellowBasket, position, new Quaternion(0, 0, 0, 0));
+		yellowBasketInstance.transform.parent = baskets.transform;
 	}
 }

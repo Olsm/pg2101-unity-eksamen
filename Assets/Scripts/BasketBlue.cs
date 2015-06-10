@@ -5,10 +5,10 @@ public class BasketBlue : MonoBehaviour {
 
 	private bool move = false;
 	private float timePoints = 10;
-	private PointsManager gameInfo;
+	private GameManager gameInfo;
 	
 	void Awake () {
-		gameInfo = GameObject.Find ("Text_GameInfo").GetComponent<PointsManager> ();
+		gameInfo = GameObject.Find ("Text_GameInfo").GetComponent<GameManager> ();
 	}
 	
 	// Update is called once per frame
