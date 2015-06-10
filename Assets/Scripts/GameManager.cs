@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
 	public Text timeLeftText;
 	public Text livesText;
 	public Text firePowerText;
+	public AudioSource basketShot;
 
 	void Awake() {
 		InvokeRepeating ("NewYellowBasket", 10f, 5f);
@@ -23,8 +24,11 @@ public class GameManager : MonoBehaviour {
 
 	void Update () {
 		if (gameOver) {
-			if (timeSurvived > PlayerPrefs.GetFloat("High Score", 0))
+			if (timeSurvived > PlayerPrefs.GetFloat("High Score", 0)) {
 				PlayerPrefs.SetFloat("High Score", timeSurvived);
+				GetComponent<AudioSource> ().Play();
+			}
+			Invoke("LoadLevel", 3f);
 			Application.LoadLevel("Menu");
 		}
 
@@ -79,6 +83,7 @@ public class GameManager : MonoBehaviour {
 	public void AddTime (float time) {
 		timer += time;
 		timeLeft += time;
+		basketShot.Play ();
 	}
 
 	void NewYellowBasket () {
@@ -88,5 +93,10 @@ public class GameManager : MonoBehaviour {
 		position = new Vector3(position.x, position.y);
 		GameObject yellowBasketInstance = (GameObject) Instantiate(yellowBasket, position, new Quaternion(0, 0, 0, 0));
 		yellowBasketInstance.transform.parent = baskets.transform;
+	}
+
+	// Load the menu scene
+	void LoadMenu() {
+		Application.LoadLevel ("Menu");  
 	}
 }

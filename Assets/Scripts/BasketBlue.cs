@@ -6,9 +6,11 @@ public class BasketBlue : MonoBehaviour {
 	private bool move = false;
 	private float timePoints = 10;
 	private GameManager gameInfo;
+	private AudioSource audio;
 	
 	void Awake () {
 		gameInfo = GameObject.Find ("Text_GameInfo").GetComponent<GameManager> ();
+		audio = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -32,5 +34,6 @@ public class BasketBlue : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other) {
 		move = true;
 		other.gameObject.transform.parent = transform;
+		audio.Play ();
 	}
 }

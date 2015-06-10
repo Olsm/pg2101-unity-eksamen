@@ -11,10 +11,12 @@ public class BallShoot : MonoBehaviour {
 	private GameManager gameInfo;
 	private bool shot = false;
 	private float shootWait = 2;
+	private AudioSource audio;
 
 	void Awake () {
 		GetComponent<Rigidbody2D> ().isKinematic = true;
 		gameInfo = GameObject.Find ("Text_GameInfo").GetComponent <GameManager> ();
+		audio = GetComponent<AudioSource> ();
 	}
 
 	void Update () {
@@ -32,6 +34,7 @@ public class BallShoot : MonoBehaviour {
 				GetComponent<Rigidbody2D> ().isKinematic = false;
 				GetComponent<Rigidbody2D> ().AddForce (new Vector2 (transform.localPosition.x * power, transform.localPosition.y + power));
 				transform.parent = null;
+				audio.Play();
 				shot = true;
 				GameObject.Find ("Player").GetComponent<PlayerController> ().Invoke ("newBall", shootWait);
 			}
