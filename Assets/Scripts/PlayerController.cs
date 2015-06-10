@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour {
 		pos = transform.position;
 
 		// Move player left/right if laser has been shot
-		if (Laser.laserShot)
+		if (LaserShoot.laserShot)
 			transform.position = Vector2.Lerp (pos, targetPosition, Time.deltaTime * playerSpeed);
 
 		if (Input.GetKeyDown ("space"))
@@ -51,13 +51,13 @@ public class PlayerController : MonoBehaviour {
 
 		// Shoot laser from gun and move player opposite direction
 		if (Input.GetKey ("left ctrl") || Input.GetKey ("right ctrl")) {
-			if (!Laser.laserShot) {
+			if (!LaserShoot.laserShot) {
 				movePlayer();
 				GameObject laserInstance = Instantiate(laser, gun.position, gun.rotation) as GameObject;
 				if (direction == "right")
-					laserInstance.GetComponent <Laser>().Shoot(new Vector2(gun.transform.position.x + shootPower, gun.transform.position.y), direction);
+					laserInstance.GetComponent <LaserShoot>().Shoot(new Vector2(gun.transform.position.x + shootPower, gun.transform.position.y), direction);
 				else
-					laserInstance.GetComponent <Laser>().Shoot(new Vector2(gun.transform.position.x - shootPower, gun.transform.position.y), direction);
+					laserInstance.GetComponent <LaserShoot>().Shoot(new Vector2(gun.transform.position.x - shootPower, gun.transform.position.y), direction);
 			} 
 		}
 	}

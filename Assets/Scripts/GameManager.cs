@@ -86,13 +86,13 @@ public class GameManager : MonoBehaviour {
 		basketShot.Play ();
 	}
 
+	// spawn a new yellow basket
 	void NewYellowBasket () {
 		Vector3 position;
 		position.x = Random.Range (-7f, 7f);
 		position.y = Random.Range (-1.3f, 3f);
 		position = new Vector3(position.x, position.y);
 		GameObject yellowBasketInstance = (GameObject) Instantiate(yellowBasket, position, new Quaternion(0, 0, 0, 0));
-		yellowBasketInstance.transform.parent = baskets.transform;
 	}
 
 	// Load the menu scene

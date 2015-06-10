@@ -34,6 +34,8 @@ public class BasketBlue : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D other) {
 		move = true;
 		other.gameObject.transform.parent = transform;
+		other.gameObject.GetComponent<Rigidbody2D> ().isKinematic = true;
+		GetComponent<Rigidbody2D>().isKinematic = false;
 		audio.Play ();
 	}
 }

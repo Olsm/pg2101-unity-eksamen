@@ -32,6 +32,7 @@ public class BasketYellow : MonoBehaviour {
 		else if (!move && timeLeft == 0) {
 			move = true;
 			timeLeftText.enabled = false;
+			GetComponent<Rigidbody2D>().isKinematic = false;
 		}
 
 		if (move) {
